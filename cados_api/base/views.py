@@ -21,7 +21,7 @@ def advocate_list(request):
     if query == None:
         query = ''
     
-    advocates = Advocate.objects.filter
+    advocates = Advocate.objects.filter(username__icontains=query)
     serializer = AdvocateSerializer(advocates, many=True)
     return Response(serializer.data)  # Use serializer.data here
 
