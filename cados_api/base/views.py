@@ -22,7 +22,7 @@ def advocate_list(request):
 @api_view(['GET'])
 def advocate_detail(request, username):
     advocate = Advocate.objects.get(username=username)  # Adjust to match your model's fields
-    serializer = AdvocateSerializer(advocate)
+    serializer = AdvocateSerializer(advocate, many=False)
     return Response(serializer.data)
     
 
