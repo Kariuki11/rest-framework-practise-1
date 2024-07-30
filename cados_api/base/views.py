@@ -32,4 +32,3 @@ def advocate_detail(request, username):
     return Response(serializer.data)
     
 
-1hr:00min
