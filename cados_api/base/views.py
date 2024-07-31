@@ -16,7 +16,8 @@ def endpoints(request):
 
 @api_view(['GET'])
 def advocate_list(request):
-    query = request.GET.get('query')
+    if request.method == 'GET':
+        query = request.GET.get('query')
     
     
     if query == None:
