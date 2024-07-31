@@ -28,15 +28,13 @@ def advocate_list(request):
     serializer = AdvocateSerializer(advocates, many=True)
     return Response(serializer.data)  # Use serializer.data here
 
-    if request.method == 'POST'
+    if request.method == 'POST':
+        Advocate.objects.create(
+            username = request.data['username'],
+            )
+
     
     
-@api_view(['POST'])
-def add_advocate(request):
-    Advocate.objects.create(
-        username = request.data['username'],
-    )
-    return Response('added')
 
 
 @api_view(['GET'])
