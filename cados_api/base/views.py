@@ -32,7 +32,7 @@ def advocate_list(request):
     return Response(serializer.data)  # Use serializer.data here
 
     if request.method == 'POST':
-        Advocate.objects.create(
+        advocate = Advocate.objects.create(
             username = request.data['username'],
             bio=request.data['bio']
             )
