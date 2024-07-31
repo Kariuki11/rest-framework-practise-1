@@ -36,7 +36,10 @@ def advocate_list(request):
             username = request.data['username'],
             bio=request.data['bio']
             )
-        return
+        
+        serializer = AdvocateSerializer(advocate, many=False)
+        
+        return Response('')
 
     
     
