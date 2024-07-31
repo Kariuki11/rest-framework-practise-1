@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -8,6 +8,9 @@ from .models import Advocate
 from .serializers import AdvocateSerializer
 
 # Create your views here.
+
+# GET  /advocates
+# POST /avocates
 
 @api_view(['GET'])
 def endpoints(request):
@@ -31,7 +34,9 @@ def advocate_list(request):
     if request.method == 'POST':
         Advocate.objects.create(
             username = request.data['username'],
+            bio=request.data['bio']
             )
+        return
 
     
     
