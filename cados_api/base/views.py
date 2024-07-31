@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.db.models import Q
 
 from .models import Advocate
 from .serializers import AdvocateSerializer
@@ -21,7 +22,7 @@ def advocate_list(request):
     if query == None:
         query = ''
     
-    advocates = Advocate.objects.filter(username__icontains=query)
+    advocates = Advocate.objects.filter(Q(username__icontains=query) | Q(bio_icontains=query))
     serializer = AdvocateSerializer(advocates, many=True)
     return Response(serializer.data)  # Use serializer.data here
 
