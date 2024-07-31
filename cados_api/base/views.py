@@ -14,8 +14,9 @@ def endpoints(request):
     data = ['/advocates', 'advocates/:username']
     return JsonResponse(data, safe=False)
 
-@api_view(['GET'])
+@api_view(['GET' "POST"])
 def advocate_list(request):
+    #Handles Get requests
     if request.method == 'GET':
         query = request.GET.get('query')
     
@@ -26,6 +27,17 @@ def advocate_list(request):
     advocates = Advocate.objects.filter(Q(username__icontains=query) | Q(bio_icontains=query))
     serializer = AdvocateSerializer(advocates, many=True)
     return Response(serializer.data)  # Use serializer.data here
+
+    if request.method == 'POST'
+    
+    
+@api_view(['POST'])
+def add_advocate(request):
+    Advocate.objects.create(
+        username = request.data['username'],
+    )
+    return Response('added')
+
 
 @api_view(['GET'])
 def advocate_detail(request, username):
