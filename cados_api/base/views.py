@@ -46,10 +46,12 @@ def advocate_list(request):
     
 
 
-@api_view(['GET'])
+@api_view(['GET' "PUT", "DELETE"])
 def advocate_detail(request, username):
     advocate = Advocate.objects.get(username=username)  # Adjust to match your model's fields
     serializer = AdvocateSerializer(advocate, many=False)
     return Response(serializer.data)
     
+    
+    1hr: 17 minutes
 
